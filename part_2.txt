@@ -1,0 +1,18 @@
+2_1
+這部分我沒有實作完成，因為沒有用過Vagrant，不過已實作到安裝vagrant及PostgreSQL，但來不及測試ansible建置user和database的部分
+附上截圖及未測試的ansible script
+
+2_2
+僅接觸過cd的部分，
+在前面ci的部分，我們是用git做版本管控，所有的service都是做成docker images，
+在cd的部分我們只需要根據service 相對應的master branch的版號，再透過ansible deploy到雲端機器(softlayer)上即可
+目前並結合autodiscovery,service一帶起來會自動向consul註冊，以做到autodiscovery，
+nagios就可以針對固定的consul server獲取service infomation，統一加上監控
+git,docker,softlayer,slack(riot),nagios,prometheus,grafana
+
+
+2_3
+維運所會接觸到的infra，接只需做第一次的安裝，日後都不再做更動修改
+解決環境的差異、可以快速的更版或rollback、更好的做自動化佈署、以及更容易做auto-scalling
+透過docker來佈署服務，就能確保環境的一致性了，
+其它要注意的地方大概是docker的版本要一致，以及service彼此之間的溝通問題，或是有些container有mount /etc/hosts所造成的差異問題
